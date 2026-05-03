@@ -116,8 +116,8 @@ class Rectangle(Shape):
         If so, the line segment interferes with the rectangle,
         and the function returns True. Otherwise, it returns False."""
 
-        is_start_inside = self.compute_interference_point(line.start)
-        is_end_inside = self.compute_interference_point(line.end)
+        is_start_inside = self.compute_interference_point(line._start_point)
+        is_end_inside = self.compute_interference_point(line._end_point)
         if is_start_inside or is_end_inside:
             return True
         else:

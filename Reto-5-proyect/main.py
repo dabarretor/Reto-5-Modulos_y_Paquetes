@@ -12,12 +12,12 @@ if __name__ == "__main__":
 
     print("RECTANGLE DATA:")
     print(
-        f"Width: {rectangle.width} and Height: \
-          {rectangle.height}"
+        f"Width: {rectangle._width} and Height: \
+          {rectangle._height}"
     )  # Output: Width: 4.0 and Height: 4.0
     print(
-        f"Center Point: ({rectangle.center_point.x},\
-          {rectangle.center_point.y})"
+        f"Center Point: ({rectangle._center_point._x},\
+          {rectangle._center_point._y})"
     )  # Output: Center Point: (2.5, -1.54)
     print(f"Area: {area}")  # Output: Area: 16.0
     print(f"Perimeter: {perimeter}")  # Output: Perimeter: 16.0
