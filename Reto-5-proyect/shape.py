@@ -1,4 +1,5 @@
 import math
+
 class Point:
     def __init__(self, x: int, y: int):
         self._x = x
@@ -44,7 +45,27 @@ class Line:
 
     def get_length(self) -> float:
         return self._length
-    
+
+    def compute_slope(self) -> float:
+        dy = self._end_point.get_y() - self._start_point.get_y()
+        dx = self._end_point.get_x() - self._start_point.get_x()
+        radians = math.atan2(dy, dx)
+        angle = math.degrees(radians)
+        return angle
+
+    def compute_horizontal_cross(self) -> bool:
+        if (self._end_point.get_y() * self._start_point.get_y()) <= 0:
+            return True
+        else:
+            return False
+
+    def compute_vertical_cross(self) -> bool:
+        if (self._end_point.get_x() * self._start_point.get_x()) <= 0:
+            return True
+        else:
+            return False
+
+
 class Shape:
     def __init__(
         self,

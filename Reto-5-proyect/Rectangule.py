@@ -13,7 +13,7 @@ class Rectangle(Shape):
                 self._width / 2
             )  # The center is sought at x.
             center_y = bottom_left_corner.y + (
-                self.height / 2
+                self._height / 2
             )  # The center is sought in y.
 
             self._center_point = Point(center_x, center_y)
@@ -45,19 +45,27 @@ class Rectangle(Shape):
         ):
             self.bottom_line = kwargs["bottom_line"]
             self.left_line = kwargs["left_line"]
-            width = self.bottom_line.compute_length()
-            height = self.left_line.compute_length()
+            width = self.bottom_line.get_length()
+            height = self.left_line.get_length()
 
             # We calculate the center point of the rectangle using the midpoint formula
-            center_x = (self.bottom_line.start.x + self.bottom_line.end.x) / 2
-            center_y = (self.left_line.start.y + self.left_line.end.y) / 2
+            center_x = (
+                self.bottom_line.get_start_point().get_x()
+                + self.bottom_line.get_end_point().get_x()
+            ) / 2
+            center_y = (
+                self.left_line.get_start_point().get_y()
+                + self.left_line.get_end_point().get_y()
+            ) / 2
 
             # The original __init__ is reused to create the rectangle
-
-        min_x = self._center_point.get_x() - int(self._width / 2)
-        max_x = self._center_point.get_x() + int(self._width / 2)
-        min_y = self._center_point.get_y() - int(self._height / 2)
-        max_y = self._center_point.get_y() + int(self._height / 2)
+            self._width = width
+            self._height = height
+            self._center_point = Point(center_x, center_y)
+        min_x = self._center_point.get_x() - int(self.get_width() / 2)
+        max_x = self._center_point.get_x() + int(self.get_width() / 2)
+        min_y = self._center_point.get_y() - int(self.get_height() / 2)
+        max_y = self._center_point.get_y() + int(self.get_height() / 2)
 
         p_bottom_left = Point(min_x, min_y)
         p_bottom_right = Point(max_x, min_y)
@@ -77,25 +85,26 @@ class Rectangle(Shape):
         ]
         super().__init__(
             is_regular=False,
-            vertices = [p_bottom_left, p_bottom_right, p_top_left, p_top_right],
-            edges = self._lines,
-            inner_angles = [90.0, 90.0, 90.0, 90.0],
+            vertices=[p_bottom_left, p_bottom_right, p_top_left, p_top_right],
+            edges=self._lines,
+            inner_angles=[90.0, 90.0, 90.0, 90.0],
         )
+
     def compute_interference_point(self, point: Point):
         """This fuction determinate if a point is inside the rectangle or not.
         For this, the maximum and minimum values of x and y
         that a point can have to be inside the rectangle are calculated.
         """
-        Min_x = self._center_point._x - (
+        Min_x = self._center_point.get_x() - (
             self._width / 2
         )  # Represents the entire left edge.
-        Max_x = self._center_point._x + (
+        Max_x = self._center_point.get_x() + (
             self._width / 2
         )  # Represents the entire right edge.
-        Min_y = self._center_point._y - (
+        Min_y = self._center_point.get_y() - (
             self._height / 2
         )  # Represents the entire bottom edge.
-        Max_y = self._center_point._y + (
+        Max_y = self._center_point.get_y() + (
             self._height / 2
         )  # Represents the entire top edge.
 
@@ -105,7 +114,7 @@ class Rectangle(Shape):
         Otherwise, it returns False.
         """
 
-        if Max_x >= point._x >= Min_x and Max_y >= point._y >= Min_y:
+        if Max_x >= point.get_x() >= Min_x and Max_y >= point.get_y() >= Min_y:
             return True
         else:
             return False
@@ -122,7 +131,6 @@ class Rectangle(Shape):
             return True
         else:
             return False
-
 
     def get_width(self) -> float:
         return self._width
@@ -149,6 +157,5 @@ class Rectangle(Shape):
 class Square(Rectangle):
     def __init__(self, side_length: float, center_point: Point):
         super().__init__(
-            height = side_length, width = side_length, 
-            center_point = center_point
+            height=side_length, width=side_length, center_point=center_point
         )
