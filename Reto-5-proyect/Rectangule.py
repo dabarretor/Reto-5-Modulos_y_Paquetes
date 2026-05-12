@@ -1,5 +1,6 @@
 from shape import Shape, Line, Point
 
+
 class Rectangle(Shape):
     def __init__(self, **kwargs):
         # The rectangle can be created using different combinations of parameters using the **kwargs syntax.

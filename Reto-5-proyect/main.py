@@ -1,4 +1,4 @@
-from Rectangule import Rectangle # , Square
+from Rectangule import Rectangle  # , Square
 from shape import Line, Point  # , Shape
 from Triangule import Triangle  # , Equilateral, Scalene, Trirectangle, Isosceles
 

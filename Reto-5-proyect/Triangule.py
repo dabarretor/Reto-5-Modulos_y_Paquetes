@@ -1,6 +1,7 @@
 import math
 from shape import Shape, Line, Point
 
+
 class Triangle(Shape):
     def __init__(
         self,
