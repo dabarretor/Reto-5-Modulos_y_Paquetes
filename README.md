@@ -64,4 +64,6 @@ Shape <|-- Triangle
 Shape *-- Line
 Shape *-- Point
 ```
-[Solución_en_python](Reto-5-proyect/main.py)
+-[Solución_en_python:punto1](Reto-5-proyect.punto1/main.py)
+
+-[Solución_en_python:punto2](Reto-5-proyect.punto2/ejercicio1.py)
