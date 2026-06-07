@@ -1,6 +1,6 @@
-from Rectangule import Rectangle  # , Square
+from Rectangle import Rectangle  # , Square
 from shape import Line, Point  # , Shape
-from Triangule import Triangle  # , Equilateral, Scalene, Trirectangle, Isosceles
+from Triangle import Triangle  # , Equilateral, Scalene, Trirectangle, Isosceles
 
 if __name__ == "__main__":
     rectangle = Rectangle(point1=Point(0.5, -3.54), point2=Point(4.5, 0.46))
